@@ -1,0 +1,26 @@
+{
+  "name": "emaily",
+  "version": "1.0.0",
+  "description": "## A full-stack app build with react, node, express, mongoDB and mongoose.",
+  "main": "index.js",
+  "engines": {
+    "node": "12.13.1",
+    "npm": "6.12.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenhe-henry/emaily.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenhe-henry/emaily/issues"
+  },
+  "homepage": "https://github.com/chenhe-henry/emaily#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
