@@ -19,3 +19,5 @@
 ### We tabulate feedback - Mongo
 
 ### User can see report of all survey responses - Mongo + React + Redux
+
+## Deploy on heroku
