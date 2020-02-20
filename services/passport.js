@@ -27,25 +27,23 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       console.log("accessToken :", accessToken);
       console.log("refreshToken :", refreshToken);
       console.log("profile :", profile);
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          //we already have a record with the given profile ID
-          //   the first parameter in done() is null, means no error here, all good,
-          // the second parameter in done() is existingUser, means yes, that is the one we found in our record
-          done(null, existingUser);
-        } else {
-          //we don't have a user record with this ID, make a new record
-          //   the same, first null means no error, and second, user means yes, save this user, that is the new record
-          new User({ googleId: profile.id }) //when call new User, it creates a mongoose model instance, which means a single record
-            // inside our collection
-            .save() //then we save the instance
-            .then(user => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        //we already have a record with the given profile ID
+        //   the first parameter in done() is null, means no error here, all good,
+        // the second parameter in done() is existingUser, means yes, that is the one we found in our record
+        done(null, existingUser);
+      } else {
+        //we don't have a user record with this ID, make a new record
+        //   the same, first null means no error, and second, user means yes, save this user, that is the new record
+        const user = await new User({ googleId: profile.id }).save(); //when call new User, it creates a mongoose model instance, which means a single record
+        // inside our collection, then we save the instance
+        done(null, user);
+      }
     }
   )
 );
