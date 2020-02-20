@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Payments from "./Payments";
 
 class Header extends React.Component {
   renderContent() {
@@ -15,9 +16,17 @@ class Header extends React.Component {
         );
       default:
         return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
+          <Fragment>
+            <li>
+              <Payments />
+            </li>
+            <li style={{ margin: "0 10px" }}>
+              Credits: {this.props.auth.credits}
+            </li>
+            <li>
+              <a href="/api/logout">Logout</a>
+            </li>
+          </Fragment>
         );
     }
   }
