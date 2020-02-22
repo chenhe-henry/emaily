@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 //connect mongoose to mongo, and add useNewUrlParser: true   to solve the issue of deprecationWarning
@@ -33,6 +34,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //Express will serve up production assets

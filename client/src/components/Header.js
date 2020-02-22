@@ -33,11 +33,14 @@ class Header extends React.Component {
   render() {
     return (
       <nav>
-        <div class="nav-wrapper">
-          <Link to={this.props.auth ? "/surveys" : "/"} class="left brand-logo">
+        <div className="nav-wrapper">
+          <Link
+            to={this.props.auth ? "/surveys" : "/"}
+            className="left brand-logo"
+          >
             Emaily
           </Link>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
             {this.renderContent()}
           </ul>
         </div>
